@@ -28,5 +28,5 @@ end
 coreo_aws_advisor_ec2 "advise-ec2" do
   action :advise
   alerts ["ec2-training-check"]
-  regions ${AUDIT_AWS_ELB_REGIONS}
+  regions ["us-east-1"]
 end
