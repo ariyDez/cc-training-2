@@ -11,4 +11,3 @@ variables:
     type: array
     default:
      - cc-nursultan-ec2-alert
-	
