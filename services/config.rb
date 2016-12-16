@@ -10,4 +10,23 @@
 	##   internet_gateway true
 	## end
 	##
-	
+coreo_aws_advisor_alert "cc-nursultan-ec2-alert" do
+	action :define
+	service :ec2
+	display_name "EC2 check"
+	description "EC2 size and encryption check for snapshot"
+	category "Inventory"
+	suggested_action "None."
+	id_map "snapshot_set.snapshot_id"
+	level "Informational"
+	objectives ["snapshots", "snapshots"]
+	audit_objects ["snapshot_set.volume_size", "snapshot_set.encrypted"]
+	operators [">", "=="]
+	alert_when [8, false]
+end
+
+coreo_aws_advisor_ec2 "cc-nursultan-advisor_ec2" do
+	action :advise
+	alerts ${EC2_ALERTS}
+	regions ${EC2_REGIONS}
+end
